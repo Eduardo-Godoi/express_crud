@@ -1,3 +1,4 @@
+import { classToClass } from "class-transformer";
 import { Request, Response } from "express";
 import CreateUserService from "../services/createUser.service";
 
@@ -13,7 +14,7 @@ class CreateUserControler {
       isAdm,
     });
 
-    return response.status(201).json(user);
+    return response.status(201).json(classToClass(user));
   }
 }
 
