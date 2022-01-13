@@ -24,13 +24,12 @@ class UpdateUserService {
       where: { id: authUserId },
     });
 
-    console.log(authUserId, "--", id);
-
     if (authUser?.id !== id && authUser?.isAdm === false) {
-      throw new AppError("Unauthorized, only admin is allowed to update", 401);
+      throw new AppError("Missing admin permissions", 401);
     }
 
     const { password, email } = data;
+
     if ("isAdm" in data) {
       throw new AppError("IsAdm field cannot be updated", 400);
     }

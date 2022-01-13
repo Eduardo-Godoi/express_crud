@@ -17,6 +17,11 @@ interface Response {
   token: string;
 }
 
+interface JwtData {
+  secret: string;
+  expiresIn: string;
+}
+
 export default class LoginService {
   public async execute({ email, password }: Request): Promise<Response> {
     const usersRepository = getCustomRepository(UsersRepository);
